@@ -1,0 +1,77 @@
+
+🧩 1. Funktioner att inkludera i MVP
+Modul	Funktion	Prioritet
+Dashboard	Statistikkort (t.ex. antal events, intäkter, biljetter)	Hög
+Events	Visa event (kortvy), skapa/redigera event	Hög
+Tickets	Lista sålda biljetter	Medel
+Calendar	Visa event per datum	Låg
+Auth	Enkel inloggning & användarprofil (mockat i början)	Låg
+Admin	Skapa/Radera användare, sätta roller	Låg
+
+
+
+🏗️ 2. Systemstruktur (Microservices)
+Tjänst	Ansvar
+EventService	CRUD för event
+TicketService	Biljettdata (kopplat till events)
+UserService	Användarhantering & roller
+StatsService	Räkna statistik till dashboard
+NotificationService (valfri)	Skicka e-post/push vid bokningar
+
+Kommunikation: REST är enklast att börja med, gRPC om du vill visa teknisk spets.
+
+
+
+🖼️ 3. Frontend-struktur (React, Vite)
+bash
+Kopiera
+Redigera
+src/
+├── components/
+│   ├── Card/
+│   ├── Sidebar/
+│   ├── Topbar/
+│   └── ChartWidget/
+├── pages/
+│   ├── Dashboard.jsx
+│   ├── Events.jsx
+│   └── Tickets.jsx
+├── services/
+│   ├── api.js
+│   └── eventService.js
+├── App.jsx
+├── main.jsx
+└── styles/
+    └── global.css
+
+
+
+🧪 4. API-lösning i backend (ASP.NET Core Web API)
+Skapa separata projekt i din GitHub-organisation:
+
+EventService.Api
+
+TicketService.Api
+
+UserService.Api
+
+StatsService.Api
+
+Alla dessa kan ha sin egen SQLite- eller MSSQL-databas under utveckling. Använd dotnet new webapi och strukturera med Controllers + Services + DTOs.
+
+
+
+☁️ 5. Hosting (Azure)
+Del	Rekommenderad publicering
+Frontend (React)	Azure Static Web App eller Vercel/Netlify
+Backend (API)	Azure App Service eller Render
+Databas (valfritt)	Azure SQL eller lokal SQLite under MVP-stadiet
+
+
+
+📦 Sammanfattning – Vad du behöver för att klara uppgiften
+✅ 1. Minst en frontend med färgprofil från Figma
+✅ 2. Minst 2–3 backend-mikrotjänster som kommunicerar (REST/gRPC)
+✅ 3. GitHub-organization med separata repos
+✅ 4. Deployment (Azure Static Web App + Azure App Service är perfekt)
+✅ 5. Funktionalitet: Visa/skapa events + Dashboard + (ev. auth/mockad user)
