@@ -1,6 +1,6 @@
 import React from 'react';
 import CardEvent from '../components/Card/CardEvent';
-import events from '../data/events'; // justera sökväg om nödvändigt
+import events from '../data/events'; 
 
 function Bookings() {
 	// Anta att alla events är bokningar – eller filtrera riktiga bokningar senare
