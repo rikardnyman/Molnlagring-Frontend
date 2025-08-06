@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-export default function CardEvent({ id, image, category, title, location, date, price }) {
+export default function CardEvent({ id, image, title, location, date, price }) {
 	const navigate = useNavigate();
 	function handleClick() {
 		navigate(`/events/event-details/${id}`);
@@ -20,7 +20,7 @@ export default function CardEvent({ id, image, category, title, location, date, 
 		<div className="card card-event" data-action="navigate" data-id={id} onClick={handleClick}>
 			<div className="card-header">
 				<img src={image} alt="Event image" />
-				<div className="category-badge">{category}</div>
+				{/* <div className="category-badge">{category}</div> */}
 			</div>
 			<div className="card-body">
 				<span className="date">{formatEventDate(date)}</span>

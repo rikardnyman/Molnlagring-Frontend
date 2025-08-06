@@ -3,6 +3,7 @@ import React from 'react';
 function CardPackages() {
 	return (
 		<div className="card card-packages">
+ 
 			<div className="card-header">
 				<h6 className="title-16 bold" style={{ marginBottom: '1rem' }}>
 					Packages
@@ -11,11 +12,11 @@ function CardPackages() {
 			<div className="card-body">
 				<div className="packages-wrapper">
 					<div className="package-wrapper">
-						<div className="package-top">
-							<h6 className="title-16 bold">General Admission Package</h6>
+						{/* <div className="package-top">
+							<h6 className="title-16 bold">Book Event</h6>
 							<span className="price">$50</span>
-						</div>
-						<div className="package-bottom">
+						</div> */}
+						{/* <div className="package-bottom">
 							<div className="package-perks">
 								<div className="package-perk">
 									<img src="/assets/CheckCircle.svg" alt="" />
@@ -26,9 +27,9 @@ function CardPackages() {
 									<p>Access to Festival Grounds</p>
 								</div>
 							</div>
-						</div>
+						</div> */}
 					</div>
-					<div className="package-wrapper">
+					{/* <div className="package-wrapper">
 						<div className="package-top">
 							<h6 className="title-16 bold">Silver Package</h6>
 							<span className="price">$70</span>
@@ -153,7 +154,7 @@ function CardPackages() {
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</div>
 			<div className="card-footer"></div>

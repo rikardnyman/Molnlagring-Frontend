@@ -1,33 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import CardEvent from '../components/Card/CardEvent';
 import events from '../data/events';
-// function Events() {
-// 	const [events, setEvents] = useState([]);
-// 	useEffect(() => {
-// 		async function fetchEvents() {
-// 			const response = await fetch('/api/events');
-// 			const data = await response.json();
-// 			setEvents(data);
-// 		}
-
-// 		fetchEvents();
-// 	}, []);
 
 function Events() {
+	const [events, setEvents] = useState([]);
+
+	const getEvents = async () => {
+		const res = await fetch(`https://eventservice-hghxg5bed8gdfebg.swedencentral-01.azurewebsites.net/api/events`);
+
+		if (res.ok) {
+			const response = await res.json();
+			setEvents(response.result);
+		}
+	};
+
+	useEffect(() => {
+		getEvents();
+	}, []);
+
 	return (
 		<div className="container">
 			<div className="page">
 				<div className="card">
-					{events.map((event, index) => (
+					{events.map((event) => (
 						<CardEvent
-							key={index}
+							key={event.id}
 							id={event.id}
 							image={event.image}
-							category={event.category}
 							title={event.title}
 							location={event.location}
-							date={event.date}
+							date={event.eventDate}
 							price={event.price}
+							description={event.description}
 						/>
 					))}
 				</div>

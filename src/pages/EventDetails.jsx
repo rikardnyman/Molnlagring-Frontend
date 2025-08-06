@@ -1,16 +1,23 @@
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import CardEvent from '../components/Card/CardEvent';
-import CardSeatPlan from '../components/Card/CardSeatPlan';
-import events from '../data/events';
-import CardPackages from '../components/Card/CardPackages';
 
 function EventDetails() {
 	const { id } = useParams();
-	const event = events.find((e) => e.id.toString() === id);
+	const [event, setEvent] = useState({});
 
-	if (!event) {
-		return <p>Event not found</p>;
-	}
+	const getEvents = async () => {
+		const res = await fetch(
+			`https://eventservice-hghxg5bed8gdfebg.swedencentral-01.azurewebsites.net/api/events/${id}`
+		);
+		if (res.ok) {
+			const response = await res.json();
+			setEvent(response.result);
+		}
+	};
+	useEffect(() => {
+		getEvents();
+	}, []);
 
 	return (
 		<div className="container">
@@ -19,22 +26,19 @@ function EventDetails() {
 					<CardEvent
 						id={event.id}
 						image={event.image}
-						category={event.category}
 						title={event.title}
 						location={event.location}
-						date={event.date}
+						date={event.eventDate}
 						price={event.price}
 						description={event.description}
 					/>
 				</div>
 				<div className="card">
-					<CardSeatPlan />
+					<Link to={`/events/booking/${id}`}>Book Event</Link>
 				</div>
-        <div className='card'>
-          <CardPackages/>
-        </div>
 			</div>
 		</div>
 	);
 }
+
 export default EventDetails;

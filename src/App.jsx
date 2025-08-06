@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import Header from './components/Header/Header';
 import Footer from './components/Footer';
+import BookingEventPage from './pages/BookingEventPage';
 
 function App() {
 	return (
@@ -25,6 +26,7 @@ function App() {
 					<Route path="/bookings" element={<Bookings />} />
 					<Route path="/bookings/e-voucher" element={<Voucher />} />
 					<Route path="/events/event-details/:id" element={<EventDetails />} />
+					<Route path="/events/booking/:id" element={<BookingEventPage />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/policy" element={<Policy />} />
 					<Route path="/terms" element={<Terms />} />
